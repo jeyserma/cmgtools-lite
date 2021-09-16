@@ -1,0 +1,39 @@
+alwaystrue      : 1  ; BEFOREDEFINE=True
+trigger_mc      : HLT_Mu17
+trigger_data    : HLT_HIMu17
+json            : isGoodRunLS(isData,run,luminosityBlock) ; BEFOREDEFINE=True
+
+vetomuon        : Sum(vetoMuons)==2
+twomuon         : Sum(goodMuons)==2
+accept          : valueInsideRange(Muon_pt[goodMuonsCharge][0],25,100) && valueInsideRange(Muon_pt[goodMuonsOther][0],25,100)
+
+oppositecharge  : (Muon_charge[goodMuons][0] + Muon_charge[goodMuons][1]) == 0
+
+test            : testVar == 0
+
+mZ              : valueInsideRange(m_mumu, 60., 120.)
+muonID          : Muon_mediumId[goodMuonsCharge][0] == 1 && Muon_mediumId[goodMuonsOther][0] == 1
+pfRelIso04      : Muon_pfRelIso04_all[goodMuonsCharge][0] < 0.15 && Muon_pfRelIso04_all[goodMuonsOther][0] < 0.15
+trigMatch       : hasTriggerMatch(Muon_eta[goodMuonsCharge][0],Muon_phi[goodMuonsCharge][0],TrigObj_eta[goodTrigObjs],TrigObj_phi[goodTrigObjs])
+#mtl1pf40        : #mt_wlike_nano(Muon_pt[goodMuonsCharge][0],Muon_phi[goodMuonsCharge][0],Muon_pt[goodMuonsOther][0],Muon_phi[goodMuonsOther][0],MET_pt,MET_phi) > 40.
+eventFilters    : Flag_globalSuperTightHalo2016Filter && Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_goodVertices && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_BadPFMuonFilter
+vetoelectrons   : Sum(vetoElectrons) == 0
+
+
+
+
+
+
+#alwaystrue : 1
+#trigger    : HLT_IsoMu24 > 0 || HLT_IsoTkMu24 > 0
+#twomuon    : nMuon == 2 && nElectron == 0
+#trigMatch  : triggerMatchWlike_nano(Muon_hasTriggerMatch[0],Muon_charge[0],Muon_hasTriggerMatch[1],Muon_charge[1],event)
+#osmuon     : Muon_pdgId[0] * Muon_pdgId[1] == -169
+#accept     : abs(Muon_eta[0]) < 2.4 && valueInsideRange(Muon_pt[0],26.0,60.0) && abs(Muon_eta[1]) < 2.4 && valueInsideRange(Muon_pt[1],26.0,60.0)
+#muonID     : Muon_mediumId[0] == 1 && Muon_mediumId[1] == 1
+#pfRelIso04 : Muon_pfRelIso04_all[0] < 0.15 && Muon_pfRelIso04_all[1] < 0.15
+#dxy        : abs(Muon_dxy[0]) < 0.05 && abs(Muon_dxy[1]) < 0.05
+#dz         : abs(Muon_dz[0]) < 0.2 && abs(Muon_dz[1]) < 0.2
+#mZ         : valueInsideRange(mass_2(Muon_pt[0],Muon_eta[0],Muon_phi[0],0.1057128,Muon_pt[1],Muon_eta[1],Muon_phi[1],0.1057128),60.,120.)
+#mt_ChsMET: mt_2(Muon_pt[0],Muon_phi[0],ChsMET_pt,ChsMET_phi) > 40.
+#mt_wlike   : mt_wlike(Muon_pt[0],Muon_phi[0],Muon_charge[0],Muon_pt[1],Muon_phi[1],Muon_charge[1],ChsMET_pt,ChsMET_phi,event) > 45.0

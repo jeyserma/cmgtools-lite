@@ -1,0 +1,16 @@
+data_sm:            .*;     SubPath="SingleMuon/",  FillColor=ROOT.kBlue, Label="Data (single Muon)"
+data_eg:            .*;     SubPath="HighEGJet/",   FillColor=ROOT.kBlue, Label="Data (EG)"
+
+TT:         .* :    87.31;      FillColor=ROOT.kGreen+2,    Label="t quark", SubPath="TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/"
+TT:         .* :    380.10;     FillColor=ROOT.kGreen+2,    Label="t quark", SubPath="TTToHadronic_TuneCP5_13TeV-powheg-pythia8/"
+TT:         .* :    364.35;     FillColor=ROOT.kGreen+2,    Label="t quark", SubPath="TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/" 
+
+DY:         .* :    6077.22;    FillColor=ROOT.kAzure+2,    Label="DY", SubPath="DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/"                   
+                     
+WJets:      .* :    49155   ;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+WJets:      .* :    8047.00 ;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+WJets:      .* :    3160.00 ;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+
+Diboson:    .* :    12.178;     FillColor=ROOT.kViolet,     Label="Diboson", SubPath="WWTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/"
+Diboson:    .* :    4.42965;    FillColor=ROOT.kViolet,     Label="Diboson", SubPath="WZTo3LNu_TuneCP5_13TeV-powheg-pythia8/"
+Diboson:    .* :    0.564;      FillColor=ROOT.kViolet,     Label="Diboson", SubPath="ZZ_TuneCP5_13TeV-pythia8/"  
