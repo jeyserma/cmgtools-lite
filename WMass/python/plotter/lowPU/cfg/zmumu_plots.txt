@@ -1,0 +1,14 @@
+
+
+muon_pt             : Muon_pt_corr[goodMuonsCharge][0]  : 100,0,100; XTitle="Muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
+muon_eta            : Muon_eta[goodMuonsCharge][0]      : 25,-2.4,2.4; XTitle="Muon #eta (GeV)", Legend='TR', IncludeOverflows=True
+muon_phi            : Muon_phi[goodMuonsCharge][0]      : 25,-4,4; XTitle="Muon #phi (GeV)", Legend='TR', IncludeOverflows=True
+m_mumu              : m_mumu                            : 60,60,120; XTitle="m(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
+pt_mumu             : pt_mumu                           : 100,0,100; XTitle="p_{T}(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
+    
+muon_leading_pt     : leadingMuonPt                     : 100,0,100; XTitle="Leading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
+muon_subleading_pt  : subLeadingMuonPt                  : 100,0,100; XTitle="Subleading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
+
+PV_npvs             : PV_npvs                           : 50,0,50; XTitle="Number of primary vertices", Legend='TR', IncludeOverflows=True
+
+lepSF               : lepSF                             : 1000,0,2; XTitle="Lepton SF", Legend='TR', IncludeOverflows=True
