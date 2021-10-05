@@ -1,0 +1,52 @@
+
+
+el_pt_corr          : Electron_pt
+vetoElectrons       : Electron_pt > 10 && Electron_cutBased > 0 && abs(Electron_eta) < 2.4 && selectElectronEta(Electron_eta, Electron_deltaEtaSC) && abs(Electron_dxy) < 0.05 && abs(Electron_dz)< 0.2
+
+
+vetoMuons           : Muon_pt > 10 && Muon_looseId && abs(Muon_eta) < 2.4 && abs(Muon_dxybs) < 0.05 && abs(Muon_dz)< 0.2
+goodEls             : vetoElectrons && Electron_pt > 25 && Electron_cutBased >= 3
+# && Muon_mediumId
+goodTrigObjs        : goodElectronTriggerCandidateLowPU(TrigObj_id,TrigObj_pt,TrigObj_l1pt,TrigObj_l2pt,TrigObj_filterBits)
+goodEPlus           : goodEls && Electron_charge > 0
+goodEMinus          : goodEls && Electron_charge < 0
+
+###leadingMuon         : goodEls[0] ? Electron_pt[goodEls[0]] >  Electron_pt[goodEls[1]] : goodEls[1]
+###trailingMuon        : goodEls[1]
+
+m_ee                : invariantmass(Electron_pt[goodEls], Electron_eta[goodEls], Electron_phi[goodEls], Electron_mass[goodEls])
+pt_ee               : transversemomentumBoson(Electron_pt[goodEls],Electron_eta[goodEls],Electron_phi[goodEls],Electron_mass[goodEls])
+leadingElPt         : Electron_pt[goodEls][0]
+subLeadingElPt      : Electron_pt[goodEls][1]
+
+trigMatch           : hasTriggerMatch(Electron_eta[goodEls], Electron_phi[goodEls], TrigObj_eta[goodTrigObjs], TrigObj_phi[goodTrigObjs])
+trigAllMatch        : hasTriggerMatch(Electron_eta, Electron_phi, TrigObj_eta[goodTrigObjs], TrigObj_phi[goodTrigObjs])
+lepSF               : applyElectronSF(Electron_pt[goodEls], Electron_eta[goodEls], Electron_charge[goodEls], trigAllMatch[goodEls])
+prefireSF           : prefireCorr(Jet_pt, Jet_eta, Jet_muEF, Photon_pt, Photon_eta, Photon_jetIdx, Photon_electronIdx, Electron_pt, Electron_eta, Electron_jetIdx, Electron_photonIdx)
+prefireSFMITEWK     : prefireCorr_MITEWK(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi)
+prefireSFPAT        : prefireCorr_PAT(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi)
+
+# 
+
+    
+    
+    
+    
+
+#
+#ptZ : transversemomentum(Muon_pt_corr[goodEls],Electron_phi[goodEls])
+#zrapidity : rapidity(Muon_pt_corr[goodEls],Electron_eta[goodEls],Electron_phi[goodEls],Muon_mass[goodEls])
+#
+#genPrefsrLeps : Numba::prefsrLeptons(GenPart_status, GenPart_statusFlags, GenPart_pdgId, GenPart_genPartIdxMother, GenPart_pt) : W|Z
+#ptVgen : transversemomentum(GenPart_pt[genPrefsrLeps],GenPart_phi[genPrefsrLeps]) : W|Z
+#yVgen : rapidity(GenPart_pt[genPrefsrLeps],GenPart_eta[genPrefsrLeps],GenPart_phi[genPrefsrLeps],GenPart_mass[genPrefsrLeps]) : W|Z
+#mVgen : invariantmass(GenPart_pt[genPrefsrLeps],GenPart_eta[genPrefsrLeps],GenPart_phi[genPrefsrLeps],GenPart_mass[genPrefsrLeps]) : W|Z
+#scetlibWeightsZscalar : Numba::correctN3LL_Z(0,mVgen,yVgen,ptVgen) : Z.*
+#
+#scetlibWeightsZ : Numba::correctN3LL_Z_allVars(mVgen, yVgen, ptVgen, true) : Z
+#scetlibWeightsWm : Numba::correctN3LL_Wm_allVars(mVgen, yVgen, ptVgen, true) : W.*minus
+#scetlibWeightsWp : Numba::correctN3LL_Wp_allVars(mVgen, yVgen, ptVgen, true) : W.*plus
+# For uncorr, assume the correction has not been applied already
+#scetlibWeightsZUncorr : Numba::correctN3LL_Z_allVars(mVgen, yVgen, ptVgen, false) : Z
+#scetlibWeightsWmUncorr : Numba::correctN3LL_Wm_allVars(mVgen, yVgen, ptVgen, false) : W.*minus
+#scetlibWeightsWpUncorr : Numba::correctN3LL_Wp_allVars(mVgen, yVgen, ptVgen, false) : W.*plus

@@ -13,8 +13,8 @@ if __name__ == "__main__":
 
     outDir = "/eos/user/j/jaeyserm/www/wmass/LeptonSF"
 
-    toPlot = ["mu_SIT", "mu_STA", "mu_HLT_pos", "mu_HLT_neg"]    
-    titles = ["Muon Selection+ID+Isolation", "Muon Standalone", "Muon HLT q=#plus1", "Muon HLT q=#minus1"]
+    toPlot = ["mu_SIT", "mu_STA", "mu_HLT_pos", "mu_HLT_neg", "el_GSFSI", "el_HLT_pos", "el_HLT_neg"]    
+    titles = ["Muon Selection+ID+Isolation", "Muon Standalone", "Muon HLT q=#plus1", "Muon HLT q=#minus1", "Electron GSF+ID+Isolation", "Electron HLT q=#plus1", "Electron HLT q=#minus1"]
     
     coll = []
     
@@ -65,7 +65,7 @@ if __name__ == "__main__":
         
         del c
        
-    for i,p in enumerate(["mu_HLT_pos", "mu_HLT_neg"] ):
+    for i,p in enumerate(["mu_HLT_pos", "mu_HLT_neg", "el_HLT_pos", "el_HLT_neg"]):
     
         fIn = ROOT.TFile("%s_DATA.root" % p)
         h_data = copy.deepcopy(fIn.Get("hEffEtaPt"))

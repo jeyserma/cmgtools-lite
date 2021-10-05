@@ -1,0 +1,24 @@
+
+
+
+leading_electron_pt             : Electron_pt[goodEls][0]           : 100,0,100; XTitle="Leading electron p_{T} (GeV)", Legend='TR', IncludeOverflows=True
+leading_electron_eta            : Electron_eta[goodEls][0]          : 48,-2.4,2.4; XTitle="Leading electron #eta (GeV)", Legend='TR', IncludeOverflows=True
+leading_electron_abs_eta        : abs(Electron_eta[goodEls][0])     : 24,0,2.4; XTitle="Leading electron #eta (GeV)", Legend='TR', IncludeOverflows=True
+leading_electron_phi            : Electron_phi[goodEls][0]          : 80,-4,4; XTitle="Leading electron #phi (GeV)", Legend='TR', IncludeOverflows=True
+
+subleading_electron_pt          : Electron_pt[goodEls][1]      : 100,0,100; XTitle="Subleading electron p_{T} (GeV)", Legend='TR', IncludeOverflows=True
+subleading_electron_eta         : Electron_eta[goodEls][1]          : 48,-2.4,2.4; XTitle="Subleading electron #eta (GeV)", Legend='TR', IncludeOverflows=True
+subleading_electron_abs_eta     : abs(Electron_eta[goodEls][1])     : 24,0,2.4; XTitle="Subleading electron #eta (GeV)", Legend='TR', IncludeOverflows=True
+subleading_electron_phi         : Electron_phi[goodEls][1]          : 80,-4,4; XTitle="Subleading electron #phi (GeV)", Legend='TR', IncludeOverflows=True
+
+m_ee                : m_ee                            : 60,60,120; XTitle="m(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
+pt_ee               : pt_ee                             : 100,0,100; XTitle="p_{T}(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
+    
+
+#PV_npvs             : PV_npvs                           : 50,0,50; XTitle="Number of primary vertices", Legend='TR', IncludeOverflows=True
+
+lepSF               : lepSF                             : 1000,0,2; XTitle="Lepton SF", Legend='TR', IncludeOverflows=True
+prefireSF           : prefireSF                         : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+prefireSFMITEWK     : prefireSFMITEWK                   : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+prefireSFPAT        : prefireSFPAT                      : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+

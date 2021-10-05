@@ -22,8 +22,9 @@ subLeadingMuonPt    : Muon_pt_corr[goodMuons][1]
 trigMatch           : hasTriggerMatch(Muon_eta[goodMuons], Muon_phi[goodMuons], TrigObj_eta[goodTrigObjs], TrigObj_phi[goodTrigObjs])
 trigAllMatch        : hasTriggerMatch(Muon_eta, Muon_phi, TrigObj_eta[goodTrigObjs], TrigObj_phi[goodTrigObjs])
 lepSF               : applyMuonSF(Muon_pt_corr[goodMuons], Muon_eta[goodMuons], Muon_charge[goodMuons], trigAllMatch[goodMuons])
-
-# 
+prefireSF           : prefireCorr(Jet_pt, Jet_eta, Jet_muEF, Photon_pt, Photon_eta, Photon_jetIdx, Photon_electronIdx, Electron_pt, Electron_eta, Electron_jetIdx, Electron_photonIdx)
+prefireSFMITEWK     : prefireCorr_MITEWK(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi)
+prefireSFPAT        : prefireCorr_PAT(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi, Muon_pt[goodMuons], Muon_eta[goodMuons], Muon_phi[goodMuons])
 
     
     

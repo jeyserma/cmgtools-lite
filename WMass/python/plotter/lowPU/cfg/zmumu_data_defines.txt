@@ -21,7 +21,8 @@ subLeadingMuonPt    : Muon_pt_corr[goodMuons][1]
 
 trigMatch           : hasTriggerMatch(Muon_eta[goodMuons], Muon_phi[goodMuons], TrigObj_eta[goodTrigObjs], TrigObj_phi[goodTrigObjs])
 lepSF               : 1
-    
+prefireSFMITEWK     : 1 
+prefireSFPAT        : 1       
 
 
 
