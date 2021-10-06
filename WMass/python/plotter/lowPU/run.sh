@@ -1,7 +1,20 @@
 #!/bin/bash
 
+eosdir=/eos/user/${USER::1}/${USER}/www/wmass/MiNNLOCorr
+if [ ! -d $eosdir ]; then
+    mkdir -p $eosdir
+fi
 
-python mcPlots.py -f -l 0.199269742 --lumi-weight 0.199269742 lowPU/cfg/mca.txt lowPU/cfg/cuts_Zmumu.txt lowPU/cfg/plots_Zmumu.txt --noCms -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ --sP "muon_pt,m_mumu,muon_eta,muon_phi,muon_leading_pt,muon_subleading_pt,pt_mumu" --pdir /eos/user/j/jaeyserm/www/wmass/test/ -p "data,DY" --pg "data := data_sm"  --legendFontSize 0.042 --allProcInLegend --n-column-legend 2 --setLegendCoordinates 0.2,0.76,0.9,0.92  -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/rdfDefine.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --json lowPU/lumiPileup/Cert_306896-307082_13TeV_PromptReco_Collisions17_JSON_LowPU_lowPU_suppressedHighPULS.txt --showRatio --maxRatioRange 0.9 1.1 --fixRatioRange  --onlyStatErrorOnRatio --noLegendRatioPlot --ratioYLabel "MC/Data" -X mtl1pf40  --ratioNums 'DY' --ratioDen "data" 
+runData=1
+if [ $# -gt 0 ]; then
+    runData=$1
+fi
+
+if [ $runData -gt 0 ]; then
+    python mcPlots.py -f -l 0.199269742 --lumi-weight 0.199269742 lowPU/cfg/mca.txt lowPU/cfg/cuts_Zmumu.txt lowPU/cfg/plots_Zmumu.txt --noCms -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ --sP "muon_pt,m_mumu,muon_eta,muon_phi,muon_leading_pt,muon_subleading_pt,pt_mumu,y_mumu" --pdir $eosdir -p "data,DY" --pg "data := data_sm"  --legendFontSize 0.042 --allProcInLegend --n-column-legend 2 --setLegendCoordinates 0.2,0.76,0.9,0.92  -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/rdfDefine.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --json lowPU/lumiPileup/Cert_306896-307082_13TeV_PromptReco_Collisions17_JSON_LowPU_lowPU_suppressedHighPULS.txt --showRatio --maxRatioRange 0.9 1.1 --fixRatioRange  --onlyStatErrorOnRatio --noLegendRatioPlot --ratioYLabel "MC/Data" -X mtl1pf40  --ratioNums 'DY' --ratioDen "data" 
+else
+    python mcPlots.py -f -l 0.199269742 --lumi-weight 0.199269742 lowPU/cfg/mca.txt lowPU/cfg/cuts_Zmumu.txt lowPU/cfg/plots_Zmumu.txt --noCms -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ --sP "muon_pt,m_mumu,muon_eta,muon_phi,muon_leading_pt,muon_subleading_pt,pt_mumu,y_mumu" --pdir $eosdir -p "DY,DY_N3LLCorr" --legendFontSize 0.042 --allProcInLegend --n-column-legend 2 --setLegendCoordinates 0.2,0.76,0.9,0.92  -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/rdfDefine.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --json lowPU/lumiPileup/Cert_306896-307082_13TeV_PromptReco_Collisions17_JSON_LowPU_lowPU_suppressedHighPULS.txt -X mtl1pf40 --showRatio --maxRatioRange 0.9 1.3 --fixRatioRange  --onlyStatErrorOnRatio --noLegendRatioPlot --ratioYLabel "Corr/Uncorr" -X mtl1pf40  --ratioNums 'DY_N3LLCorr' --ratioDen "DY" --plotmode nostack
+fi
 
 
 

@@ -1,6 +1,6 @@
 alwaystrue      : 1  ; BEFOREDEFINE=True
-trigger_mc      : HLT_Mu17
-trigger_data    : HLT_HIMu17
+#trigger_mc      : HLT_Mu17
+#trigger_data    : HLT_HIMu17
 json            : isGoodRunLS(isData,run,luminosityBlock) ; BEFOREDEFINE=True
 
 vetomuon        : Sum(vetoMuons)==2

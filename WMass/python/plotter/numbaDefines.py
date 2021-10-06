@@ -17,6 +17,10 @@ correctionsZ_file = np.load(f"{script_dir}/../postprocessing/data/gen/inclusive_
 binsZ = correctionsZ_file['bins']
 correctionsZ = correctionsZ_file['scetlibCorr3D_Z']
 
+correctionsLowPUZ_file = np.load(f"{script_dir}/../postprocessing/data/gen/MGtoMiNNLOCorr3D_Zinc_pT.npz", allow_pickle=True)
+binsLowPUZ = correctionsLowPUZ_file['bins']
+correctionsLowPUZ = correctionsLowPUZ_file['MGtoMiNNLOCorr3D_Z']
+
 # Define all of this outside the function to help Numba with typing
 iv,im,iy,ipt = range(4)
 # Be careful about typing, numba is nasty about this
@@ -35,6 +39,11 @@ binsWp_m = binsWp[im].astype(np.float64)
 binsWp_y = binsWp[iy].astype(np.float64) 
 binsWp_pt = binsWp[ipt].astype(np.float64) 
 
+binsLowPUZ_var = binsLowPUZ[iv].astype(np.int64)   
+binsLowPUZ_m = binsLowPUZ[im].astype(np.float64)  
+binsLowPUZ_y = binsLowPUZ[iy].astype(np.float64) 
+binsLowPUZ_pt = binsLowPUZ[ipt].astype(np.float64) 
+
 @numba.jit('float64[:](float64[:], float64[:], float64[:], boolean, int64)', nopython=True, debug=True)
 def correctN3LL_allVars(mV, yV, ptV, norm, chan):
     if chan == 0:
@@ -52,6 +61,11 @@ def correctN3LL_allVars(mV, yV, ptV, norm, chan):
         bins_y = binsWp_y
         bins_pt = binsWp_pt
         corr = correctionsWp
+    elif chan == 3:
+        bins_m = binsLowPUZ_m
+        bins_y = binsLowPUZ_y
+        bins_pt = binsLowPUZ_pt
+        corr = correctionsLowPUZ
 
     # Numba doesn't seem to have digitize with the first arg a scalar implemented
     binm = np.digitize(mV, bins_m)[0]
@@ -80,6 +94,11 @@ def correctN3LL(var, mV, yV, ptV, chan):
         bins_y = binsWp_y
         bins_pt = binsWp_pt
         corr = correctionsWp
+    elif chan == 3:
+        bins_m = binsLowPUZ_m
+        bins_y = binsLowPUZ_y
+        bins_pt = binsLowPUZ_pt
+        corr = correctionsLowPUZ
 
     # Numba doesn't seem to have digitize with the first arg a scalar implemented
     binm = np.digitize(mV, bins_m)[0]
@@ -112,6 +131,16 @@ def correctN3LL_Wm(var, mV, yV, ptV):
 @ROOT.Numba.Declare(["int", "double", "double", "double"], "double")
 def correctN3LL_Wp(var, mV, yV, ptV):
     return correctN3LL(var, np.array([mV]), np.array([yV]), np.array([ptV]), 2)
+
+@ROOT.Numba.Declare(["int", "double", "double", "double"], "double")
+def correctN3LL_LowPUZ(var, mV, yV, ptV):
+    # Correct MadGraph to MiNNLO, then MiNNLO to SCETlib
+    return correctN3LL(var, np.array([mV]), np.array([yV]), np.array([ptV]), 0)*correctN3LL(var, np.array([mV]), np.array([yV]), np.array([ptV]), 3)
+
+@ROOT.Numba.Declare(["int", "double", "double", "double"], "double")
+def correctN3LL_LowPUZMiNNLO(var, mV, yV, ptV):
+    # Correct MadGraph to MiNNLO, then MiNNLO to SCETlib
+    return correctN3LL(var, np.array([mV]), np.array([yV]), np.array([ptV]), 3)
 
 @ROOT.Numba.Declare(["RVec<int>","RVec<int>","RVec<int>","RVec<int>", "RVec<float>", ], "RVec<bool>")
 def prefsrLeptons(status, statusFlags, pdgId, motherIdx, pts):

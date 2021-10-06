@@ -1444,6 +1444,7 @@ if __name__ == "__main__":
     outdir = os.path.dirname(outname) 
     if outdir and not os.path.exists(outdir):
         os.makedirs(outdir)
+    if not os.path.isfile("/".join([outdir, "index.php"])):
         htmlpath = "./templates/index.php"
         shutil.copy(htmlpath, outdir)
     logging.info("Will save plots to %s " % outname)

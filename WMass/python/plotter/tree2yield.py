@@ -34,6 +34,10 @@ if "/pileupWeights_cc.so" not in ROOT.gSystem.GetLibraries():
 if "/jsonManager_cc.so" not in ROOT.gSystem.GetLibraries(): 
     compileMacro("ccFiles/jsonManager.cc")
 
+if "w-mass-13TeV/lowPU_cc.so" not in ROOT.gSystem.GetLibraries(): 
+    compileMacro("ccFiles/RoccoR.cc")
+    compileMacro("ccFiles/lowPU.cc")
+
 if "/w-mass-13TeV/functionsWMass_cc.so" not in ROOT.gSystem.GetLibraries(): 
     compileMacro("ccFiles/functionsWMass.cc")
 
