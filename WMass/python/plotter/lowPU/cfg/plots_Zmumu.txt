@@ -5,6 +5,7 @@ muon_eta            : Muon_eta[goodMuonsCharge][0]      : 25,-2.4,2.4; XTitle="M
 muon_phi            : Muon_phi[goodMuonsCharge][0]      : 25,-4,4; XTitle="Muon #phi (GeV)", Legend='TR', IncludeOverflows=True
 m_mumu              : m_mumu                            : 60,60,120; XTitle="m(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
 pt_mumu             : pt_mumu                           : 100,0,100; XTitle="p_{T}(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
+y_mumu              : y_mumu                            : 50,-2.5,2.5; XTitle="y^{#mu #mu}", Legend='TR', IncludeOverflows=False
     
 muon_leading_pt     : leadingMuonPt                     : 100,0,100; XTitle="Leading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
 muon_subleading_pt  : subLeadingMuonPt                  : 100,0,100; XTitle="Subleading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True

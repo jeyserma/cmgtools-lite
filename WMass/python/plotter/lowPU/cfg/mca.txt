@@ -6,6 +6,8 @@ TT0l:         .* :    1.0;     FillColor=ROOT.kGreen+2,    Label="t quark", SubP
 TT1l:         .* :    1.0;     FillColor=ROOT.kGreen+2,    Label="t quark", SubPath="TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/" 
 
 DY:         .* :    1.0;    FillColor=ROOT.kAzure+2,    Label="DY", SubPath="DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/"                   
+DY_MiNNLOCorr:         .* :    1.0;    FillColor=ROOT.kBlue,    Label="DY (MiNNLO Corr.)", SubPath="DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/", AddWeight="Numba::correctN3LL_LowPUZMiNNLO(0\,mVgen\,yVgen\,ptVgen)"                    
+DY_N3LLCorr:         .* :    1.0;    FillColor=ROOT.kRed,    Label="DY (NNLO+N3LL Corr.)", SubPath="DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/", AddWeight="Numba::correctN3LL_LowPUZ(0\,mVgen\,yVgen\,ptVgen)" 
   
 WJets0J:        .* :    1.0;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
 WJets1J:        .* :    1.0;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
