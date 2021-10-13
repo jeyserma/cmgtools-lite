@@ -705,6 +705,8 @@ def parseHists(hName, leg, rebin=1):
             if hist == None: hist = h
             else: hist.Add(h)
             
+            print(bkg, h.Integral())
+            
 
         hist.SetName("bkg%d" % i)
         hist.SetFillColor(colors_bkgs[i])
@@ -945,10 +947,13 @@ if __name__ == "__main__":
     
     
     data = ["data"]
-    bkgs = [["TT2l", "TT1l", "TT0l"], ["WJets0J", "WJets1J", "WJets2J", "WW", "WZ", "ZZ"], ["DY"]]
-    #bkgs = [["DY"]]
+    #bkgs = [["TT2l", "TT1l", "TT0l"], ["WJets0J", "WJets1J", "WJets2J", "WW", "WZ", "ZZ"], ["DY"]]
+    bkgs = [["TT2l", "TT1l", "TT0l"], ["WJets0J", "WJets1J", "WJets2J", "WW", "WZ", "ZZ"], ["DY_MiNNLO"]]
+    bkgs = [["TT2l", "TT1l", "TT0l"], ["WJets0J", "WJets1J", "WJets2J", "WW", "WZ", "ZZ"], ["DY_MiNNLO"]]
+    #bkgs = [["DY_MiNNLO"]]
     
-    labels_bkgs = ["TT", "EWK", "DY"]
+    labels_bkgs = ["TT", "EWK", "DY (Mg5_amc)"]
+    labels_bkgs = ["TT", "EWK", "DY (MiNNLO+N3LL)"]
     #labels_bkgs = ["DY"]
     labels_data = "Data"
 
@@ -968,8 +973,12 @@ if __name__ == "__main__":
 
     rebin=1
     singlePlot("m_mumu", "m_mumu", 60, 120, 1e0, 1e6, "m(#mu,#mu) (GeV)", "Events", rebin=rebin)
-    singlePlot("pt_mumu", "pt_mumu", 0, 100, 1e1, 1e5, "p_{T}(#mu,#mu) (GeV)", "Events", rebin=rebin)
+    #singlePlot("m_mumu", "m_mumu_nolog", 60, 120, 0, 2e4, "m(#mu,#mu) (GeV)", "Events", rebin=rebin, logY=False)
+    sys.exit()
+    rebin=2
+    singlePlot("pt_mumu", "pt_mumu", 0, 100, 1e1, 1e6, "p_{T}(#mu,#mu) (GeV)", "Events", rebin=rebin)
     
+    rebin=1
     singlePlot("leading_muon_pt", "leading_muon_pt", 0, 100, 1e1, 1e5, "Leading muon p_{T} (GeV)", "Events", rebin=rebin)
     singlePlot("subleading_muon_pt", "subleading_muon_pt", 0, 100, 1e1, 1e5, "Subleading muon p_{T} (GeV)", "Events", rebin=rebin)
     
@@ -984,7 +993,7 @@ if __name__ == "__main__":
     #singlePlot("PV_npvs", "PV_npvs", 0, 10, 1e1, 1e5, "Number of primary vertices", "Events", rebin=rebin)
     
     fIn.Close()
-
+    sys.exit()
     
     ## electron
     data = ["data"]

@@ -7,13 +7,13 @@ TAG="test"
 
 #python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_data_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/  -p "data" --pg "data := data_sm" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_data_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --json lowPU/lumiPileup/Cert_306896-307082_13TeV_PromptReco_Collisions17_JSON_LowPU_lowPU_suppressedHighPULS.txt  --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//data_Zmumu.root --lumi-weight 1.0
 
-python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ -p "DY" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//DY_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFPAT"
+python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /data/shared/lowPU/Nano_0302/ -p "DY,DY_MiNNLO" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//DY_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFPAT*scetlibWeightsZscalar"
 
-#python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ -p "TT2l,TT1l,TT0l" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//TT_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFSimple"
+#python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ -p "TT2l,TT1l,TT0l" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//TT_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFPAT"
 
-#python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ -p "WJets0J,WJets1J,WJets2J" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//WJets_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFSimple"
+#python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ -p "WJets0J,WJets1J,WJets2J" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//WJets_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFPAT"
 
-#python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ -p "WW,WZ,ZZ" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//VV_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFSimple"
+#python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmumu_plots.txt -P /eos/cms/store/cmst3/group/wmass/LowPU/Nano_0302/ -p "WW,WZ,ZZ" -j 8  --nanoaod-tree --rdf-define-file lowPU/cfg/zmumu_mc_defines.txt --rdf-alias "goodMuonsCharge: goodMuonsPlus:.*" --rdf-alias "goodMuonsOther: goodMuonsMinus:.*" -v 3 --skipPlot --out /eos/user/j/jaeyserm/www/wmass/test//VV_Zmumu.root --lumi-weight 1.0 -W "lepSF*prefireSFPAT"
 
 #-W "lepSF"
 
@@ -25,6 +25,8 @@ python mcPlots.py -f lowPU/cfg/mca.txt lowPU/cfg/zmumu_mc_cuts.txt lowPU/cfg/zmu
 #--unweight
 
 rm /eos/user/j/jaeyserm/www/wmass/test/Zmumu.root
+#hadd /eos/user/j/jaeyserm/www/wmass/test/Zmumu.root  /eos/user/j/jaeyserm/www/wmass/test/DY_Zmumu.root /eos/user/j/jaeyserm/www/wmass/test/data_Zmumu.root
+
 hadd /eos/user/j/jaeyserm/www/wmass/test/Zmumu.root  /eos/user/j/jaeyserm/www/wmass/test/DY_Zmumu.root /eos/user/j/jaeyserm/www/wmass/test/TT_Zmumu.root /eos/user/j/jaeyserm/www/wmass/test/VV_Zmumu.root /eos/user/j/jaeyserm/www/wmass/test/WJets_Zmumu.root /eos/user/j/jaeyserm/www/wmass/test/data_Zmumu.root
 
 ## MC

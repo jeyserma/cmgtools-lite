@@ -303,7 +303,7 @@ class MCAnalysis:
                     if options.weight:
                         # get sum of weights from Events tree, filtering some events with large weights
                         # this assumes the trees are unskimmed to correctly compute the sum!!
-                        wdef = 'std::copysign(1., genWeight)' 
+                        wdef = 'std::copysign(1., Generator_weight)' 
                         # TODO: Unimplemented
                         if self.clipWeight != 1.:
                             # Need to process everything to get the nominal weight (or could hardcode it...)

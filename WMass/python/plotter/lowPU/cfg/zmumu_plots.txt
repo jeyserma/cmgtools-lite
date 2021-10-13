@@ -19,6 +19,6 @@ muon_subleading_pt  : subLeadingMuonPt                  : 100,0,100; XTitle="Sub
 PV_npvs             : PV_npvs                           : 50,0,50; XTitle="Number of primary vertices", Legend='TR', IncludeOverflows=True
 
 lepSF               : lepSF                             : 1000,0,2; XTitle="Lepton SF", Legend='TR', IncludeOverflows=True
-prefireSF           : prefireSF                         : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
-prefireSFMITEWK     : prefireSFMITEWK                   : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
-prefireSFPAT        : prefireSFPAT                      : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+#prefireSF           : prefireSF                         : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+#prefireSFMITEWK     : prefireSFMITEWK                   : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+#prefireSFPAT        : prefireSFPAT                      : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True

@@ -11,6 +11,18 @@ DY = {
 
 }
 
+DY_MiNNLO = {
+
+    'tag':      "DY_MiNNLO",
+    'name':     "",
+    'xsec':     6077.22/3.0,
+    'color':    ROOT.kAzure+2,
+    'sumw':     1.0,
+
+}
+
+
+
 
 TT0l = {
 

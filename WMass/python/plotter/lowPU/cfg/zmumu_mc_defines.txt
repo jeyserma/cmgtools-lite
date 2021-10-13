@@ -26,6 +26,12 @@ prefireSF           : prefireCorr(Jet_pt, Jet_eta, Jet_muEF, Photon_pt, Photon_e
 prefireSFMITEWK     : prefireCorr_MITEWK(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi)
 prefireSFPAT        : prefireCorr_PAT(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi, Muon_pt[goodMuons], Muon_eta[goodMuons], Muon_phi[goodMuons])
 
+
+genPrefsrLeps       : Numba::prefsrLeptons(GenPart_status, GenPart_statusFlags, GenPart_pdgId, GenPart_genPartIdxMother, GenPart_pt) : W|DY
+ptVgen              : transversemomentum(GenPart_pt[genPrefsrLeps],GenPart_phi[genPrefsrLeps]) : W|DY
+yVgen               : rapidity(GenPart_pt[genPrefsrLeps],GenPart_eta[genPrefsrLeps],GenPart_phi[genPrefsrLeps],GenPart_mass[genPrefsrLeps]) : W|DY
+mVgen               : invariantmass(GenPart_pt[genPrefsrLeps],GenPart_eta[genPrefsrLeps],GenPart_phi[genPrefsrLeps],GenPart_mass[genPrefsrLeps]) : W|DY
+scetlibWeightsZscalar : Numba::correctN3LL_Z(0,mVgen,yVgen,ptVgen)
     
     
     
