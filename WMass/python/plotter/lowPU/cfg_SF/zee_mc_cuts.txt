@@ -1,0 +1,18 @@
+
+alwaystrue      : 1  ; BEFOREDEFINE=True 
+trigger         : HLT_Ele20_WPLoose_Gsf  
+json            : isGoodRunLS(isData,run,luminosityBlock) ; BEFOREDEFINE=True
+
+vetoelectron    : Sum(vetoElectrons)==2
+twoEls          : Sum(goodEls)==2
+accept          : valueInsideRange(Electron_pt[goodEPlus][0], 25, 10000) && valueInsideRange(Electron_pt[goodEMinus][0], 25, 10000)
+
+oppositecharge  : (Electron_charge[goodEls][0] + Electron_charge[goodEls][1]) == 0
+
+#test            : testVar == 0
+
+mZ              : valueInsideRange(m_ee, 60., 120.)
+trigMatch       : trigMatch[goodEls[0]]
+eventFilters    : Flag_globalSuperTightHalo2016Filter && Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_goodVertices && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_BadPFMuonFilter
+vetoMuons       : Sum(vetoMuons) == 0
+

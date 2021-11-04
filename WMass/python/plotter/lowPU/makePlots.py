@@ -950,15 +950,16 @@ if __name__ == "__main__":
     #bkgs = [["TT2l", "TT1l", "TT0l"], ["WJets0J", "WJets1J", "WJets2J", "WW", "WZ", "ZZ"], ["DY"]]
     bkgs = [["TT2l", "TT1l", "TT0l"], ["WJets0J", "WJets1J", "WJets2J", "WW", "WZ", "ZZ"], ["DY_MiNNLO"]]
     bkgs = [["TT2l", "TT1l", "TT0l"], ["WJets0J", "WJets1J", "WJets2J", "WW", "WZ", "ZZ"], ["DY_MiNNLO"]]
-    #bkgs = [["DY_MiNNLO"]]
+    bkgs = [["DY_MiNNLO"]]
     
     labels_bkgs = ["TT", "EWK", "DY (Mg5_amc)"]
     labels_bkgs = ["TT", "EWK", "DY (MiNNLO+N3LL)"]
-    #labels_bkgs = ["DY"]
+    labels_bkgs = ["DY"]
     labels_data = "Data"
 
     colors_bkgs = [ROOT.kAzure+2]
     colors_bkgs = [ROOT.TColor.GetColor(222, 90, 106), ROOT.TColor.GetColor(100, 192, 232), ROOT.TColor.GetColor(248, 206, 104), ROOT.TColor.GetColor(155, 152, 204)]
+    colors_bkgs = [ROOT.TColor.GetColor(248, 206, 104)]
     #colors_bkgs = [ROOT.TColor.GetColor(248, 206, 104)]
     
 
@@ -967,16 +968,18 @@ if __name__ == "__main__":
     #rebin = [60, 63, 66, 69, 72, 75, 78, 80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,102,104,106,108,110,112,114,116,118,120]
 
 
-    outDir = "/eos/user/j/jaeyserm/www/wmass/lowPU/Zmumu/"
+    outDir = "/eos/user/j/jaeyserm/www/wmass/lowPU/Zmumu_new_SF/"
+    if not os.path.exists(outDir): os.makedirs(outDir)
     fIn = ROOT.TFile("/eos/user/j/jaeyserm/www/wmass/test/Zmumu.root")
     
 
     rebin=1
     singlePlot("m_mumu", "m_mumu", 60, 120, 1e0, 1e6, "m(#mu,#mu) (GeV)", "Events", rebin=rebin)
     #singlePlot("m_mumu", "m_mumu_nolog", 60, 120, 0, 2e4, "m(#mu,#mu) (GeV)", "Events", rebin=rebin, logY=False)
-    sys.exit()
+ 
     rebin=2
     singlePlot("pt_mumu", "pt_mumu", 0, 100, 1e1, 1e6, "p_{T}(#mu,#mu) (GeV)", "Events", rebin=rebin)
+    singlePlot("eta_mumu", "eta_mumu", -2.4, 2.4, 1e1, 1e6, "#eta (#mu,#mu)", "Events", rebin=rebin)
     
     rebin=1
     singlePlot("leading_muon_pt", "leading_muon_pt", 0, 100, 1e1, 1e5, "Leading muon p_{T} (GeV)", "Events", rebin=rebin)
@@ -986,6 +989,9 @@ if __name__ == "__main__":
     singlePlot("subleading_muon_eta", "subleading_muon_eta", -2.4, 2.4, 1e1, 1e6, "Subleading muon #eta", "Events", rebin=rebin)
     singlePlot("leading_muon_abs_eta", "leading_muon_abs_eta", 0, 2.4, 1e1, 1e6, "Leading muon |#eta|", "Events", rebin=rebin)
     singlePlot("subleading_muon_abs_eta", "subleading_muon_abs_eta", 0, 2.4, 1e1, 1e6, "Subleading muon |#eta|", "Events", rebin=rebin)
+    
+    singlePlot("trg_muon_eta", "trg_muon_eta", -2.4, 2.4, 1e1, 1e6, "Triggered muon #eta", "Events", rebin=rebin)
+    singlePlot("nontrg_muon_eta", "nontrg_muon_eta", -2.4, 2.4, 1e1, 1e6, "Non-triggered muon #eta", "Events", rebin=rebin)
     
     singlePlot("leading_muon_phi", "leading_muon_phi", -3.5, 3.5, 1e1, 1e6, "Leading muon #phi", "Events", rebin=rebin)
     singlePlot("subleading_muon_phi", "subleading_muon_phi", -3.5, 3.5, 1e1, 1e6, "Subleading muon #phi", "Events", rebin=rebin)

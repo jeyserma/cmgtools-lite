@@ -10,19 +10,26 @@ subleading_muon_eta         : Muon_eta[goodMuons][1]        : 48,-2.4,2.4; XTitl
 subleading_muon_abs_eta     : abs(Muon_eta[goodMuons][1])   : 24,0,2.4; XTitle="Subleading muon #eta (GeV)", Legend='TR', IncludeOverflows=True
 subleading_muon_phi         : Muon_phi[goodMuons][1]        : 80,-4,4; XTitle="Subleading muon #phi (GeV)", Legend='TR', IncludeOverflows=True
 
-trg_muon_eta            	: MuonTrg_eta        			: 48,-2.4,2.4; XTitle="Triggered muon #eta (GeV)", Legend='TR', IncludeOverflows=True
-nontrg_muon_eta            	: MuonNonTrg_eta        		: 48,-2.4,2.4; XTitle="Non-triggered muon #eta (GeV)", Legend='TR', IncludeOverflows=False
+muon_eta         			: Muon_eta[goodMuons]           : 48000,-2.4,2.4; XTitle="Muons #eta (GeV)", Legend='TR', IncludeOverflows=True
+muon_abs_eta     			: abs(Muon_eta[goodMuons])      : 24000,0,2.4; XTitle="Muons #eta (GeV)", Legend='TR', IncludeOverflows=True
+
+MuonPlus_eta				: MuonPlus_eta        			: 48000,-2.4,2.4; XTitle="Triggered muon #eta (GeV)", Legend='TR', IncludeOverflows=True
+MuonMinus_eta				: MuonMinus_eta        			: 48000,-2.4,2.4; XTitle="Triggered muon #eta (GeV)", Legend='TR', IncludeOverflows=True
+MuonPlus_abseta				: abs(MuonPlus_eta)        		: 96000,-2.4,2.4; XTitle="Triggered muon #eta (GeV)", Legend='TR', IncludeOverflows=True
+MuonMinus_abseta			: abs(MuonMinus_eta)        	: 96000,-2.4,2.4; XTitle="Triggered muon #eta (GeV)", Legend='TR', IncludeOverflows=True
+MuonPlus_pt					: MuonPlus_pt    				: 100,0,100; XTitle="Leading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
+MuonMinus_pt				: MuonMinus_pt   				: 100,0,100; XTitle="Leading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
+
+
 
 m_mumu              : m_mumu                            	: 60,60,120; XTitle="m(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
 pt_mumu             : pt_mumu                           	: 100,0,100; XTitle="p_{T}(#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
 eta_mumu            : eta_mumu                           	: 48,-2.4,2.4; XTitle="#eta (#mu #mu) (GeV)", Legend='TR', IncludeOverflows=True
    
-muon_leading_pt     : leadingMuonPt                     : 100,0,100; XTitle="Leading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
-muon_subleading_pt  : subLeadingMuonPt                  : 100,0,100; XTitle="Subleading muon p_{T} (GeV)", Legend='TR', IncludeOverflows=True
 
-PV_npvs             : PV_npvs                           : 50,0,50; XTitle="Number of primary vertices", Legend='TR', IncludeOverflows=True
+#PV_npvs             : PV_npvs                           : 50,0,50; XTitle="Number of primary vertices", Legend='TR', IncludeOverflows=True
 
 lepSF               : lepSF                             : 1000,0,2; XTitle="Lepton SF", Legend='TR', IncludeOverflows=True
-#prefireSF           : prefireSF                         : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+#prefireSF           : prefireSF                         : 10000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
 #prefireSFMITEWK     : prefireSFMITEWK                   : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
-#prefireSFPAT        : prefireSFPAT                      : 1000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True
+#prefireSFPAT        : prefireSFPAT                      : 10000,0,2; XTitle="Lepton prefireSF SF", Legend='TR', IncludeOverflows=True

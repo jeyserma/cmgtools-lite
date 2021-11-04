@@ -1,0 +1,27 @@
+data_sm:            .*;     SubPath="SingleMuon/",  FillColor=ROOT.kBlue, Label="Data (single Muon)"
+data_eg:            .*;     SubPath="HighEGJet/",   FillColor=ROOT.kBlue, Label="Data (EG)"
+
+TT2l:         .* :    1.0;      FillColor=ROOT.kGreen+2,    Label="t quark", SubPath="TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/"
+TT0l:         .* :    1.0;     FillColor=ROOT.kGreen+2,    Label="t quark", SubPath="TTToHadronic_TuneCP5_13TeV-powheg-pythia8/"
+TT1l:         .* :    1.0;     FillColor=ROOT.kGreen+2,    Label="t quark", SubPath="TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/" 
+
+DY:         .* :    1.0;    FillColor=ROOT.kAzure+2,    Label="DY", SubPath="DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/"   
+DY_MiNNLO:         .* :    1.0;    FillColor=ROOT.kAzure+2,    Label="DY_MiNNLO", SubPath="DYJetsToMuMu_M-50_massWgtFix_TuneCP5_13TeV-powhegMiNNLO-pythia8-photos+RunIIFall17MiniAODv2-fixECALGT_LowPU_94X_mc2017_realistic_v10For2017H_v2-v1+MINIAODSIM/"   
+DY_MiNNLO_ee:         .* :    1.0;    FillColor=ROOT.kAzure+2,    Label="DY_MiNNLO", SubPath="DYJetsToEE_M-50_massWgtFix_TuneCP5_13TeV-powhegMiNNLO-pythia8-photos+RunIIFall17MiniAODv2-fixECALGT_LowPU_94X_mc2017_realistic_v10For2017H_v2-v1+MINIAODSIM/"   
+                
+DY_MiNNLOCorr:         .* :    1.0;    FillColor=ROOT.kBlue,    Label="DY (MiNNLO Corr.)", SubPath="DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/", AddWeight="Numba::correctN3LL_LowPUZMiNNLO(0\,mVgen\,yVgen\,ptVgen)"                    
+DY_N3LLCorr:         .* :    1.0;    FillColor=ROOT.kRed,    Label="DY (NNLO+N3LL Corr.)", SubPath="DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/", AddWeight="Numba::correctN3LL_LowPUZ(0\,mVgen\,yVgen\,ptVgen)" 
+  
+WJets0J:        .* :    1.0;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+WJets1J:        .* :    1.0;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+WJets2J:        .* :    1.0;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/" 
+#WJets:      .* :    49155   ;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+#WJets:      .* :    8047.00 ;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+#WJets:      .* :    3160.00 ;   FillColor=ROOT.kRed+1,      Label="WJets",  SubPath="WJetsToLNu_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/"
+
+WW:    .* :    1.0;     FillColor=ROOT.kViolet,     Label="Diboson", SubPath="WWTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/"
+WZ:    .* :    1.0;    FillColor=ROOT.kViolet,     Label="Diboson", SubPath="WZTo3LNu_TuneCP5_13TeV-powheg-pythia8/"
+ZZ:    .* :    1.0;      FillColor=ROOT.kViolet,     Label="Diboson", SubPath="ZZ_TuneCP5_13TeV-pythia8/"  
+#VV:    .* :    12.178;     FillColor=ROOT.kViolet,     Label="Diboson", SubPath="WWTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/"
+#VV:    .* :    4.42965;    FillColor=ROOT.kViolet,     Label="Diboson", SubPath="WZTo3LNu_TuneCP5_13TeV-powheg-pythia8/"
+#VV:    .* :    0.564;      FillColor=ROOT.kViolet,     Label="Diboson", SubPath="ZZ_TuneCP5_13TeV-pythia8/"  

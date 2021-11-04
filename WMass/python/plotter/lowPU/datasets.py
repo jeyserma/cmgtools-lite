@@ -11,9 +11,22 @@ DY = {
 
 }
 
+
+
 DY_MiNNLO = {
 
     'tag':      "DY_MiNNLO",
+    'name':     "",
+    'xsec':     6077.22/3.0,
+    'color':    ROOT.kAzure+2,
+    'sumw':     1.0,
+
+}
+
+
+DY_MiNNLO_ee = {
+
+    'tag':      "DY_MiNNLO_ee",
     'name':     "",
     'xsec':     6077.22/3.0,
     'color':    ROOT.kAzure+2,
@@ -116,6 +129,9 @@ SingleMuon = {
     'color':    -1,
 
 }
+
+
+
 
 '''
 data_sm:            .*;     SubPath="SingleMuon/",  FillColor=ROOT.kBlue, Label="Data (single Muon)"

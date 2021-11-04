@@ -1,11 +1,12 @@
 
 
 Muon_pt_corr        : applyRochesterMC(Muon_pt, Muon_eta, Muon_phi, Muon_charge, Muon_genPartIdx, GenPart_pt, Muon_nTrackerLayers)
-vetoMuons           : Muon_pt_corr > 10 && Muon_looseId && abs(Muon_eta) < 2.4 && abs(Muon_dxybs) < 0.05 && abs(Muon_dz)< 0.2
-
+#vetoMuons           : Muon_pt_corr > 10 && Muon_looseId && abs(Muon_eta) < 2.4 && abs(Muon_dxybs) < 0.05 && abs(Muon_dz)< 0.2
+vetoMuons           : Muon_pt_corr > 10 && Muon_looseId && abs(Muon_eta) < 2.4 && abs(Muon_dxybs) < 0.05
 
 vetoElectrons       : Electron_pt > 10 && Electron_cutBased > 0 && abs(Electron_eta) < 2.4 && abs(Electron_dxy) < 0.05 && abs(Electron_dz)< 0.2
-goodMuons           : vetoMuons && Muon_pt_corr > 25 && Muon_tightId && Muon_pfRelIso04_all < 0.15 
+#goodMuons           : vetoMuons && Muon_pt_corr > 25 && Muon_tightId && Muon_pfRelIso04_all < 0.15 
+goodMuons           : vetoMuons && Muon_pt_corr > 25 && Muon_mediumId && Muon_pfRelIso04_all < 0.15 
 # && Muon_mediumId
 goodTrigObjs        : goodMuonTriggerCandidateLowPU(TrigObj_id,TrigObj_pt,TrigObj_l1pt,TrigObj_l2pt,TrigObj_filterBits)
 goodMuonsPlus       : goodMuons && Muon_charge > 0
@@ -16,12 +17,14 @@ trailingMuon        : goodMuons[1]
 
 m_mumu              : invariantmass(Muon_pt_corr[goodMuons],Muon_eta[goodMuons],Muon_phi[goodMuons],Muon_mass[goodMuons])
 pt_mumu             : transversemomentumBoson(Muon_pt_corr[goodMuons],Muon_eta[goodMuons],Muon_phi[goodMuons],Muon_mass[goodMuons])
+eta_mumu            : rapidity(Muon_pt_corr[goodMuons],Muon_eta[goodMuons],Muon_phi[goodMuons],Muon_mass[goodMuons])
 leadingMuonPt       : Muon_pt_corr[goodMuons][0]
 subLeadingMuonPt    : Muon_pt_corr[goodMuons][1]
 
 trigMatch           : hasTriggerMatch(Muon_eta[goodMuons], Muon_phi[goodMuons], TrigObj_eta[goodTrigObjs], TrigObj_phi[goodTrigObjs])
 trigAllMatch        : hasTriggerMatch(Muon_eta, Muon_phi, TrigObj_eta[goodTrigObjs], TrigObj_phi[goodTrigObjs])
 lepSF               : applyMuonSF(Muon_pt_corr[goodMuons], Muon_eta[goodMuons], Muon_charge[goodMuons], trigAllMatch[goodMuons])
+lepSFNew			: applyMuonSFNew(Muon_pt_corr[goodMuons], Muon_eta[goodMuons], Muon_charge[goodMuons], trigAllMatch[goodMuons])
 prefireSF           : prefireCorr(Jet_pt, Jet_eta, Jet_muEF, Photon_pt, Photon_eta, Photon_jetIdx, Photon_electronIdx, Electron_pt, Electron_eta, Electron_jetIdx, Electron_photonIdx)
 prefireSFMITEWK     : prefireCorr_MITEWK(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi)
 prefireSFPAT        : prefireCorr_PAT(Jet_pt, Jet_eta, Jet_phi, Jet_muEF, Photon_pt, Photon_eta, Photon_phi, Muon_pt[goodMuons], Muon_eta[goodMuons], Muon_phi[goodMuons])
@@ -34,7 +37,9 @@ mVgen               : invariantmass(GenPart_pt[genPrefsrLeps],GenPart_eta[genPre
 scetlibWeightsZscalar : Numba::correctN3LL_Z(0,mVgen,yVgen,ptVgen)
     
     
-    
+#MuonTrg_eta			: Muon_eta[trigAllMatch][0] ## same as below
+MuonTrg_eta			: MuonTrg_eta(Muon_eta[goodMuons], trigMatch) 
+MuonNonTrg_eta		: MuonNonTrg_eta(Muon_eta[goodMuons], trigMatch) 
     
 
 #
